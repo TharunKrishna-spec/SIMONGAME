@@ -320,3 +320,21 @@ function enterFullScreen() {
   }
 }
 // Call this on game start if on mobile
+$(document).keypress(function () {
+  if (!started) {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+    $("#restart-btn").hide();
+  }
+});
+
+// For mobile: tap anywhere to start
+$(document).on("touchstart", function () {
+  if (!started) {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+    $("#restart-btn").hide();
+  }
+});
