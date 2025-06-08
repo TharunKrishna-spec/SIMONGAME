@@ -1,48 +1,48 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
 
-<head>
-  <meta charset="utf-8">
-  <title>Simon</title>
-  <link rel="stylesheet" href="styless2.css">
-  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <head>
+    <meta charset="utf-8">
+    <title>Simon</title>
+    <link rel="stylesheet" href="styless2.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 
-</head>
+  </head>
 
-<body>
-  <div id="tsparticles"></div>
-  <h1 id="level-title">Press Any Key to Start</h1>
-  <h2 id="score-display">Score: 0 | High Score: 0</h2>
-  <button id="restart-btn" >Restart Game</button>
-  <button id="mute-btn">🔊</button>
-  <button id="theme-btn">🌓</button>
- 
+  <body>
+    <div id="tsparticles"></div>
+    <h1 id="level-title">Press Any Key to Start</h1>
+    <h2 id="score-display">Score: 0 | High Score: 0</h2>
+    <button id="restart-btn" >Restart Game</button>
+    <button id="mute-btn">🔊</button>
+    <button id="theme-btn">🌓</button>
+  
 
-  <div class="container">
-    <div class="row">
+    <div class="container">
+      <div class="row">
 
-      <div type="button" id="green" class="btn green"></div>
-      <div type="button" id="red" class="btn red"></div>
-    
+        <div type="button" id="green" class="btn green"></div>
+        <div type="button" id="red" class="btn red"></div>
+      
+      </div>
+
+      <div class="row">
+
+        <div type="button" id="yellow" class="btn yellow"></div>
+        <div type="button" id="blue" class="btn blue"></div>
+
+      </div>
+      <div class="blackhole"></div>
+
     </div>
 
-    <div class="row">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="game.js"></script>
+  </body>
 
-      <div type="button" id="yellow" class="btn yellow"></div>
-      <div type="button" id="blue" class="btn blue"></div>
-
-    </div>
-    <div class="blackhole"></div>
-
-  </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="game.js"></script>
-</body>
-
-</html>
+  </html>
