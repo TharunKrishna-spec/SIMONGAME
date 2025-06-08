@@ -1,0 +1,531 @@
+body {
+  text-align: center;
+  background-color: #011F3F;
+}
+
+#level-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  margin:  3%;
+  color: #FEF2BF;
+}
+
+.container {
+  display: block;
+  width: 50%;
+  margin: auto;
+
+}
+
+.btn {
+  margin: 25px;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+  border-radius: 20%;
+}
+
+.game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
+#score-display {
+  color: white;
+  font-family:'Press Start 2P', cursive;;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+#restart-btn {
+  display: none;
+  font-family: 'Press Start 2P', cursive; /* Same retro font */
+  background: #111;
+  color: #0ff;
+  border: 3px solid #0ff;
+  padding: 14px 28px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  box-shadow: 0 0 5px #0ff, 0 0 10px #0ff inset;
+  transition: all 0.2s ease-in-out;
+  margin: 40px auto;
+  display: block;
+}
+
+#restart-btn:hover {
+  background-color: #0ff;
+  color: #000;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff inset;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+#mute-btn {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #111;
+  color: #0ff;
+  border: 2px solid #0ff;
+  padding: 12px 18px;
+  font-size: 1.2rem;
+  border-radius: 0;
+  text-transform: uppercase;
+  box-shadow: 0 0 5px #0ff, 0 0 12px #0ff inset;
+  transition: all 0.2s ease-in-out;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+#mute-btn:hover {
+  background-color: #0ff;
+  color: #000;
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #0ff, 0 0 20px #0ff inset;
+}
+@keyframes flicker {
+  0% { opacity: 1; }
+  5% { opacity: 0.3; }
+  10% { opacity: 1; }
+  15% { opacity: 0.6; }
+  20% { opacity: 1; }
+}
+#level-title {
+  animation: flicker 1s infinite alternate;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(#0ff 1px, transparent 1px),
+              linear-gradient(to right, #0ff 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.05;
+  z-index: -1;
+}
+#score {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff;
+}
+@keyframes glow {
+  0% { opacity: 1; box-shadow: 0 0 0px; }
+  50% { opacity: 1; box-shadow: 0 0 20px white; }
+  100% { opacity: 1; box-shadow: 0 0 0px; }
+}
+.game-over {
+  animation: shake 0.2s;
+}
+@keyframes shake {
+  0% { transform: translateX(0px); }
+  25% { transform: translateX(5px); }
+  50% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  100% { transform: translateX(0px); }
+}
+.red, .blue, .green, .yellow {
+  box-shadow: 0 0 10px #000;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px white;
+  cursor: pointer;
+}
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+}
+.glow {
+  animation: glow 1s ease-in-out infinite alternate;
+}
+body.light-theme {
+  background-color: #f1f1f1;
+  color: #000;
+}
+body.light-theme #level-title,
+body.light-theme #score-display {
+  color: #333;
+}
+.sequence-glow {
+  box-shadow: 0 0 40px white;
+}
+#theme-btn {
+  font-family: 'Press Start 2P', cursive;
+  background: #111;
+  color: #0ff;
+  border: 3px solid #0ff;
+  padding: 14px 18px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  box-shadow: 0 0 5px #0ff, 0 0 10px #0ff inset;
+  transition: all 0.2s ease-in-out;
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 1000;
+}
+
+#theme-btn:hover {
+  background-color: #0ff;
+  color: #000;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff inset;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+/* But since you're using plain CSS, copy the restart-btn styles directly: */
+#theme-btn {
+  font-family: 'Press Start 2P', cursive;
+  background: #111;
+  color: #0ff;
+  border: 3px solid #0ff;
+  padding: 14px 21px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  box-shadow: 0 0 5px #0ff, 0 0 10px #0ff inset;
+  transition: all 0.2s ease-in-out;
+  position: fixed;
+  top: 80px; /* just below mute button */
+  right: 20px;
+  z-index: 1000;
+}
+
+#theme-btn:hover {
+  background-color: #0ff;
+  color: #000;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff inset;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+body.light-theme {
+  background: linear-gradient(135deg, #f8f9fa, #e0f7ff);
+  color: #111;
+  transition: all 0.3s ease-in-out;
+}
+
+body.light-theme #level-title,
+body.light-theme #score-display {
+  color: #111;
+  text-shadow: 0 0 4px #00f2ff77;
+}
+
+body.light-theme .btn {
+  border-color: #333;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px #00f2ff44;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+body.light-theme .btn:hover {
+  background-color: #e3f7ff;
+  box-shadow: 0 0 15px #00f2ff99;
+}
+
+body.light-theme #restart-btn,
+body.light-theme #mute-btn,
+body.light-theme #theme-btn {
+  background: #fff;
+  color: #00bcd4;
+  border: 3px solid #00bcd4;
+  box-shadow: 0 0 6px #00f2ff44, 0 0 14px #00f2ff22 inset;
+}
+
+body.light-theme #restart-btn:hover,
+body.light-theme #mute-btn:hover,
+body.light-theme #theme-btn:hover {
+  background: #00bcd4;
+  color: #fff;
+  box-shadow: 0 0 15px #00f2ff, 0 0 20px #00f2ff inset;
+}
+body.light-theme::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(#00bcd4 1px, transparent 1px),
+              linear-gradient(to right, #00bcd4 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.04;
+  z-index: -1;
+}
+* {
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+body.light-theme .red {
+  background-color: #ff4d4d; /* brighter red */
+  border-color: #cc0000;
+}
+
+body.light-theme .green {
+  background-color: #00cc66;
+  border-color: #00994d;
+}
+
+body.light-theme .blue {
+  background-color: #3399ff;
+  border-color: #0066cc;
+}
+
+body.light-theme .yellow {
+  background-color: #ffeb3b;
+  border-color: #c9b200;
+}
+
+body.light-theme .btn {
+  color: #111; /* optional: if you put text inside buttons */
+  box-shadow: 0 0 8px #00f2ff66;
+}
+body.light-theme .container {
+  background: rgba(255, 255, 255, 0.7); /* frosted glass feel */
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2), 0 0 10px rgba(0, 255, 255, 0.1) inset;
+  border: 2px solid #00e5ff44;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.3s ease-in-out;
+}
+@keyframes borderGlow {
+  0% { box-shadow: 0 0 10px #00f2ff22; }
+  50% { box-shadow: 0 0 20px #00f2ff88; }
+  100% { box-shadow: 0 0 10px #00f2ff22; }
+}
+
+body.light-theme .container {
+  animation: borderGlow 3s infinite ease-in-out;
+}
+body.light-theme .container {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+}
+
+body.light-theme .container::before {
+  content: '';
+  position: absolute;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #0ff, #00f, #0ff);
+  z-index: -1;
+  animation: hueShift 6s infinite linear;
+}
+
+@keyframes hueShift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+body.light-theme.level-up {
+  animation: levelPulse 0.5s ease-in-out;
+}
+
+@keyframes levelPulse {
+  0% { background-color: #ffffff; }
+  50% { background-color: #e0ffff; }
+  100% { background-color: #ffffff; }
+}
+body.light-theme .btn:hover {
+  box-shadow: 0 0 25px #00f2ff, 0 0 40px #00f2ff inset;
+  transform: scale(1.05);
+  transition: 0.2s ease-in-out;
+}
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(#00f2ff, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particleFade 0.25s ease-out forwards;
+
+}
+
+@keyframes particleFade {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2); } /* faster and less large */
+}
+
+body.theme-transition {
+  transition: background-color 0.5s ease-in-out;
+}
+body {
+  transition: background 0.5s, color 0.5s;
+}
+
+.light-theme {
+  background-color: #fefefe;
+  color: #111;
+}
+
+.theme-transition {
+  transition: all 0.4s ease-in-out;
+}
+
+#score-display.glow {
+  text-shadow: 0 0 10px #ff0, 0 0 20px #f0f, 0 0 30px #0ff;
+}
+
+button {
+  font-family: 'Press Start 2P';
+  margin: 8px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: #ccc;
+}
+
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, transparent);
+  pointer-events: none;
+  animation: pop 0.3s ease-out forwards;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+#tsparticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background: radial-gradient(#0d0d2b, #000000);
+}
+.blackhole {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(ellipse at center, #111 0%, #000 60%, transparent 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+  animation: spin 10s linear infinite;
+  z-index: -2;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.glow-pulse {
+  animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0px rgba(255,255,255,0); }
+  50% { box-shadow: 0 0 40px rgba(255,255,255,0.3); }
+  100% { box-shadow: 0 0 0px rgba(255,255,255,0); }
+}
+
+
+/* comment*/
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .btn {
+    width: 40vw;
+    height: 40vw;
+    max-width: 150px;
+    max-height: 150px;
+    margin: 10px;
+  }
+
+  #level-title {
+    font-size: 1.5rem;
+    margin: 20px 10px;
+  }
+
+  #score-display {
+    font-size: 0.9rem;
+    margin: 10px 0;
+  }
+
+  #restart-btn,
+  #mute-btn,
+  #theme-btn {
+    padding: 10px 12px;
+    font-size: 0.7rem;
+  }
+
+  #mute-btn {
+    top: 10px;
+    right: 10px;
+  }
+
+  #theme-btn {
+    top: 60px;
+    right: 10px;
+  }
+
+  .blackhole {
+    display: none; /* hide effect on small screens */
+  }
+}
+#game-logo {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 20px auto 10px;
+  animation: glow 2s infinite alternate;
+}
